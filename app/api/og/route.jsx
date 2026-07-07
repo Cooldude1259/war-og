@@ -1,8 +1,8 @@
 import { ImageResponse } from '@vercel/og';
 
-export const config = { runtime: 'edge' };
+export const runtime = 'edge'; // Next.js uses this exact syntax for Edge
 
-export default async function handler() {
+export async function GET() {
   const SB_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co';
   const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5obW1mcml3dGhzdmFjZnNyY2hkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MjYzMjQsImV4cCI6MjA5NDUwMjMyNH0.FIN04Hjcsm6oMMpHB-lFG4_-FBByjtWX7HtezoHL1-o';
 
