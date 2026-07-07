@@ -1,6 +1,6 @@
 import { ImageResponse } from '@vercel/og';
 
-export const runtime = 'edge'; // Next.js uses this exact syntax for Edge
+export const runtime = 'edge';
 
 export async function GET() {
   const SB_URL = 'https://nhmmfriwthsvacfsrchd.supabase.co';
@@ -15,58 +15,69 @@ export async function GET() {
 
   return new ImageResponse(
     (
+      /* Doubled container to 2400x1260 for native 2x density (no more blur) */
       <div style={{
-        width: '1200px',
-        height: '630px',
+        width: '2400px',
+        height: '1260px',
         backgroundColor: '#080608',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '50px 20px',
+        padding: '100px 40px',
         position: 'relative',
         fontFamily: 'serif'
       }}>
+        {/* Doubled Decorative Border Layout */}
         <div style={{
           position: 'absolute',
-          top: '20px',
-          left: '20px',
-          right: '20px',
-          bottom: '20px',
-          border: '1px solid rgba(201,168,76,0.3)',
+          top: '40px',
+          left: '40px',
+          right: '40px',
+          bottom: '40px',
+          border: '2px solid rgba(201,168,76,0.3)',
           pointerEvents: 'none'
         }} />
 
+        {/* Header Section */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ color: '#c9a84c', fontSize: '28px', letterSpacing: '8px', marginBottom: '10px' }}>
+          <div style={{ color: '#c9a84c', fontSize: '56px', letterSpacing: '16px', marginBottom: '20px' }}>
             THE AMAZING DIGITAL CIRCUS
           </div>
-          <div style={{ color: '#ffffff', fontSize: '64px', fontWeight: 'bold' }}>
+          <div style={{ color: '#ffffff', fontSize: '128px', fontWeight: 'bold' }}>
             THE GREAT WAR
           </div>
         </div>
 
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around', alignItems: 'center', padding: '0 60px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '300px' }}>
-            <span style={{ fontSize: '64px' }}>🐀</span>
-            <span style={{ color: '#a0522d', fontSize: '24px', letterSpacing: '4px', marginTop: '10px' }}>RAT ARMY</span>
-            <span style={{ color: '#a0522d', fontSize: '96px', fontWeight: 'bold' }}>{totals.rat}</span>
+        {/* Versus Score Section */}
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around', alignItems: 'center', padding: '0 120px' }}>
+          {/* Rat Army */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '600px' }}>
+            <span style={{ fontSize: '128px' }}>🐀</span>
+            <span style={{ color: '#a0522d', fontSize: '48px', letterSpacing: '8px', marginTop: '20px' }}>RAT ARMY</span>
+            <span style={{ color: '#a0522d', fontSize: '192px', fontWeight: 'bold' }}>{totals.rat}</span>
           </div>
 
-          <div style={{ color: '#333333', fontSize: '48px', fontWeight: 'bold' }}>VS</div>
+          {/* VS */}
+          <div style={{ color: '#333333', fontSize: '96px', fontWeight: 'bold' }}>VS</div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '300px' }}>
-            <span style={{ fontSize: '64px' }}>🐱</span>
-            <span style={{ color: '#9b59b6', fontSize: '24px', letterSpacing: '4px', marginTop: '10px' }}>CAT ARMY</span>
-            <span style={{ color: '#9b59b6', fontSize: '96px', fontWeight: 'bold' }}>{totals.cat}</span>
+          {/* Cat Army */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '600px' }}>
+            <span style={{ fontSize: '128px' }}>🐱</span>
+            <span style={{ color: '#9b59b6', fontSize: '48px', letterSpacing: '8px', marginTop: '20px' }}>CAT ARMY</span>
+            <span style={{ color: '#9b59b6', fontSize: '192px', fontWeight: 'bold' }}>{totals.cat}</span>
           </div>
         </div>
 
-        <div style={{ color: 'rgba(201,168,76,0.4)', fontSize: '14px', letterSpacing: '3px' }}>
+        {/* Footer Section */}
+        <div style={{ color: 'rgba(201,168,76,0.4)', fontSize: '28px', letterSpacing: '6px' }}>
           PUBLIC SCORES ONLY · HIDDEN VARIABLES REVEALED AT THE FINALE
         </div>
       </div>
     ),
-    { width: 1200, height: 630 }
+    { 
+      width: 1200, 
+      height: 630 
+    } // Keeps meta bounds at standard 1200x630 while drawing at 2x resolution
   );
 }
